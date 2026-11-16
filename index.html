@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Operaciones - Matemática Discreta I</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-layout">
+        <!-- Sidebar de Navegación -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo-icon">∑</div>
+                <div>
+                    <h1>MatDiscreta I</h1>
+                    <span>Sistema Académico</span>
+                </div>
+                <button class="close-sidebar" id="closeSidebar" aria-label="Cerrar menú">&times;</button>
+            </div>
+            <nav class="nav-menu">
+                <button class="nav-btn active" data-module="inicio">
+                    <span class="nav-num">00</span> Inicio y Resumen
+                </button>
+                <div class="nav-section">PROGRESIONES</div>
+                <button class="nav-btn" data-module="mod1">
+                    <span class="nav-num">01</span> Término n-ésimo P.A.
+                </button>
+                <button class="nav-btn" data-module="mod2">
+                    <span class="nav-num">02</span> Término n-ésimo P.G.
+                </button>
+                <button class="nav-btn" data-module="mod3">
+                    <span class="nav-num">03</span> Suma n términos P.A.
+                </button>
+                <button class="nav-btn" data-module="mod4">
+                    <span class="nav-num">04</span> Suma n términos P.G.
+                </button>
+                <div class="nav-section">COMBINATORIA</div>
+                <button class="nav-btn" data-module="mod5">
+                    <span class="nav-num">05</span> Número Factorial (n!)
+                </button>
+                <button class="nav-btn" data-module="mod6">
+                    <span class="nav-num">06</span> Combinación C(n, r)
+                </button>
+                <button class="nav-btn" data-module="mod7">
+                    <span class="nav-num">07</span> Variación V(n, r)
+                </button>
+            </nav>
+            <div class="sidebar-footer">
+                <p>Ingeniería de Sistemas</p>
+                <small>Matemática Discreta I &copy; 2026</small>
+            </div>
+        </aside>
+
+        <!-- Contenido Principal -->
+        <main class="main-content">
+            <header class="topbar">
+                <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">&#9776;</button>
+                <h2 id="moduleTitle">Panel Principal del Sistema</h2>
+                <button class="btn-outline btn-sm" id="toggleHistoryBtn">Historial (<span id="historyCount">0</span>)</button>
+            </header>
+
+            <div class="workspace">
+                <section class="module-container" id="moduleContainer">
+
+                    <div class="welcome-card">
+                        <h3>Bienvenido al Sistema de Operaciones de Matemática Discreta I</h3>
+                        <p>Esta herramienta académica permite calcular, validar y visualizar el procedimiento paso a paso de siete operaciones fundamentales de sucesiones, series y análisis combinatorio.</p>
+                        <div class="cards-grid">
+                            <div class="info-card" onclick="selectModule('mod1')">
+                                <span class="badge">Módulo 1</span>
+                                <h4>Término n-ésimo P.A.</h4>
+                                <p class="formula-preview">a<sub>n</sub> = a<sub>1</sub> + (n - 1) &middot; d</p>
+                            </div>
+                            <div class="info-card" onclick="selectModule('mod2')">
+                                <span class="badge">Módulo 2</span>
+                                <h4>Término n-ésimo P.G.</h4>
+                                <p class="formula-preview">a<sub>n</sub> = a<sub>1</sub> &middot; r<sup>(n - 1)</sup></p>
+                            </div>
+                            <div class="info-card" onclick="selectModule('mod3')">
+                                <span class="badge">Módulo 3</span>
+                                <h4>Suma n términos P.A.</h4>
+                                <p class="formula-preview">S<sub>n</sub> = (n / 2) &middot; [2a<sub>1</sub> + (n - 1)d]</p>
+                            </div>
+                            <div class="info-card" onclick="selectModule('mod4')">
+                                <span class="badge">Módulo 4</span>
+                                <h4>Suma n términos P.G.</h4>
+                                <p class="formula-preview">S<sub>n</sub> = a<sub>1</sub>(r<sup>n</sup> - 1) / (r - 1)</p>
+                            </div>
+                            <div class="info-card" onclick="selectModule('mod5')">
+                                <span class="badge">Módulo 5</span>
+                                <h4>Número Factorial</h4>
+                                <p class="formula-preview">n! = n &middot; (n - 1) &middot; ... &middot; 1</p>
+                            </div>
+                            <div class="info-card" onclick="selectModule('mod6')">
+                                <span class="badge">Módulo 6</span>
+                                <h4>Combinación</h4>
+                                <p class="formula-preview">C(n, r) = n! / [r! &middot; (n - r)!]</p>
+                            </div>
+                            <div class="info-card" onclick="selectModule('mod7')">
+                                <span class="badge">Módulo 7</span>
+                                <h4>Variación sin Repetición</h4>
+                                <p class="formula-preview">V(n, r) = n! / (n - r)!</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Panel Lateral de Historial -->
+                <aside class="history-panel" id="historyPanel">
+                    <div class="history-header">
+                        <h3>Historial de Cálculos</h3>
+                        <button class="btn-danger btn-xs" id="clearHistoryBtn">Limpiar</button>
+                    </div>
+                    <div class="history-list" id="historyList">
+                        <p class="empty-msg">Aún no se han realizado operaciones.</p>
+                    </div>
+                </aside>
+            </div>
+        </main>
+    </div>
+
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>
