@@ -9,7 +9,6 @@
 </head>
 <body>
     <div class="app-layout">
-        <!-- Sidebar de Navegación -->
         <aside class="sidebar" id="sidebar">
             <div class="sidebar-header">
                 <div class="logo-icon">∑</div>
@@ -53,7 +52,6 @@
             </div>
         </aside>
 
-        <!-- Contenido Principal -->
         <main class="main-content">
             <header class="topbar">
                 <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">&#9776;</button>
@@ -63,7 +61,6 @@
 
             <div class="workspace">
                 <section class="module-container" id="moduleContainer">
-
                     <div class="welcome-card">
                         <h3>Bienvenido al Sistema de Operaciones de Matemática Discreta I</h3>
                         <p>Esta herramienta académica permite calcular, validar y visualizar el procedimiento paso a paso de siete operaciones fundamentales de sucesiones, series y análisis combinatorio.</p>
@@ -95,19 +92,18 @@
                             </div>
                             <div class="info-card" onclick="selectModule('mod6')">
                                 <span class="badge">Módulo 6</span>
-                                <h4>Combinación</h4>
-                                <p class="formula-preview">C(n, r) = n! / [r! &middot; (n - r)!]</p>
+                                <h4>Combinación (Sin / Con Rep.)</h4>
+                                <p class="formula-preview">C(n, r) y CR(n, r)</p>
                             </div>
                             <div class="info-card" onclick="selectModule('mod7')">
                                 <span class="badge">Módulo 7</span>
-                                <h4>Variación sin Repetición</h4>
-                                <p class="formula-preview">V(n, r) = n! / (n - r)!</p>
+                                <h4>Variación (Sin / Con Rep.)</h4>
+                                <p class="formula-preview">V(n, r) y VR(n, r)</p>
                             </div>
                         </div>
                     </div>
                 </section>
 
-                <!-- Panel Lateral de Historial -->
                 <aside class="history-panel" id="historyPanel">
                     <div class="history-header">
                         <h3>Historial de Cálculos</h3>

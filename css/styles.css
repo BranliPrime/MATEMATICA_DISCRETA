@@ -26,7 +26,6 @@ body {
 
 .app-layout { display: flex; min-height: 100vh; }
 
-/* Sidebar */
 .sidebar {
     width: 280px;
     background: var(--primary);
@@ -80,7 +79,7 @@ body {
 
 .sidebar-footer { padding: 1rem 1.5rem; border-top: 1px solid rgba(255,255,255,0.12); font-size: 0.8rem; color: #bfdbfe; }
 
-/* Main Content */
+
 .main-content { flex: 1; display: flex; flex-direction: column; min-width: 0; }
 
 .topbar {
@@ -97,10 +96,50 @@ body {
     padding: 1.75rem; flex: 1; align-items: start;
 }
 
-/* Cards & Forms */
+
 .module-card, .welcome-card {
     background: var(--bg-card); border-radius: var(--radius);
     padding: 1.75rem; box-shadow: var(--shadow); border: 1px solid var(--border-color);
+}
+
+.module-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+
+.variant-switch {
+    display: inline-flex;
+    background: var(--bg-main);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 0.25rem;
+    gap: 0.25rem;
+}
+
+.variant-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    padding: 0.45rem 0.9rem;
+    font-size: 0.84rem;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.variant-btn:hover {
+    color: var(--primary);
+}
+
+.variant-btn.active {
+    background: var(--primary-light);
+    color: #fff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
 }
 
 .formula-banner {
@@ -129,7 +168,7 @@ button { font-family: inherit; font-weight: 500; border-radius: 6px; cursor: poi
 .btn-outline { background: transparent; border: 1px solid var(--primary-light); color: var(--primary-light); padding: 0.45rem 0.9rem; }
 .btn-danger { background: var(--error); color: #fff; border: none; padding: 0.3rem 0.65rem; font-size: 0.8rem; }
 
-/* Alerts & Results */
+
 .alert-error {
     background: var(--error-bg); border: 1px solid #fecaca; color: var(--error);
     padding: 0.9rem 1.1rem; border-radius: 6px; margin-top: 1.25rem; font-size: 0.9rem;
@@ -151,7 +190,7 @@ button { font-family: inherit; font-weight: 500; border-radius: 6px; cursor: poi
 }
 .steps-list li:last-child { border-bottom: none; font-weight: 600; color: var(--primary); }
 
-/* Welcome Grid */
+
 .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
 .info-card {
     border: 1px solid var(--border-color); border-radius: 8px; padding: 1.1rem;
@@ -161,7 +200,6 @@ button { font-family: inherit; font-weight: 500; border-radius: 6px; cursor: poi
 .badge { display: inline-block; background: var(--primary-bg); color: var(--primary); font-size: 0.72rem; font-weight: 700; padding: 0.2rem 0.5rem; border-radius: 4px; margin-bottom: 0.5rem; }
 .formula-preview { font-family: 'Fira Code', monospace; font-size: 0.85rem; color: var(--text-muted); margin-top: 0.4rem; }
 
-/* History Panel */
 .history-panel {
     background: var(--bg-card); border-radius: var(--radius);
     padding: 1.25rem; box-shadow: var(--shadow); border: 1px solid var(--border-color);
@@ -174,7 +212,7 @@ button { font-family: inherit; font-weight: 500; border-radius: 6px; cursor: poi
 .history-item code { font-family: 'Fira Code', monospace; color: var(--success); font-weight: 600; }
 .empty-msg { font-size: 0.85rem; color: var(--text-muted); text-align: center; padding: 1.5rem 0; }
 
-/* Responsive */
+
 @media (max-width: 1024px) {
     .workspace { grid-template-columns: 1fr; }
     .history-panel { display: none; }

@@ -111,3 +111,80 @@ export function calcularVariacion(nRaw, rRaw) {
         ]
     };
 }
+
+// MÓDULO 8: Combinación con repetición CR(n, r)
+export function calcularCombinacionConRepeticion(nRaw, rRaw) {
+    if (!isNonNegativeInteger(nRaw) || !isNonNegativeInteger(rRaw)) {
+        throw new Error('Tanto n como r deben ser números enteros no negativos (≥ 0).');
+    }
+
+    const n = Number(nRaw);
+    const r = Number(rRaw);
+
+    if (n === 0 && r > 0) {
+        throw new Error('Error matemático: Si n = 0, no se pueden seleccionar r > 0 elementos.');
+    }
+    if (n + r - 1 > 170) {
+        throw new Error('Por legibilidad y rendimiento web, la suma (n + r - 1) debe ser ≤ 170.');
+    }
+
+    if (n === 0 && r === 0) {
+        return {
+            resultado: '1',
+            formula: 'CR(n, r) = (n + r - 1)! / [r! · (n - 1)!]',
+            pasos: [
+                'Datos ingresados: n = 0, r = 0',
+                '1. Por convención combinatoria, CR(0, 0) = 1',
+                '2. Resultado final: CR(0, 0) = 1'
+            ]
+        };
+    }
+
+    const numVal = n + r - 1;
+    const denVal = n - 1;
+
+    const numFact = factorialBigInt(numVal);
+    const rFact = factorialBigInt(r);
+    const denFact = factorialBigInt(denVal);
+    const denominador = rFact * denFact;
+    const combRep = numFact / denominador;
+
+    return {
+        resultado: combRep.toString(),
+        formula: 'CR(n, r) = (n + r - 1)! / [r! · (n - 1)!]',
+        pasos: [
+            `Datos ingresados: n = ${n}, r = ${r} (Se permite repetición, r puede ser mayor que n)`,
+            `1. Sustituir en la fórmula: CR(${n}, ${r}) = (${n} + ${r} - 1)! / [${r}! · (${n} - 1)!] = ${numVal}! / [${r}! · ${denVal}!]`,
+            `2. Calcular factoriales: ${numVal}! = ${numFact}, ${r}! = ${rFact}, ${denVal}! = ${denFact}`,
+            `3. Dividir: CR(${n}, ${r}) = ${numFact} / (${rFact} × ${denFact}) = ${numFact} / ${denominador}`,
+            `4. Resultado final: CR(${n}, ${r}) = ${combRep.toString()}`
+        ]
+    };
+}
+
+// MÓDULO 9: Variación con repetición VR(n, r)
+export function calcularVariacionConRepeticion(nRaw, rRaw) {
+    if (!isNonNegativeInteger(nRaw) || !isNonNegativeInteger(rRaw)) {
+        throw new Error('Tanto n como r deben ser números enteros no negativos (≥ 0).');
+    }
+
+    const n = Number(nRaw);
+    const r = Number(rRaw);
+
+    if (n > 1000 || r > 500) {
+        throw new Error('Por legibilidad y rendimiento web, ingrese n ≤ 1000 y r ≤ 500.');
+    }
+
+    const varRep = BigInt(n) ** BigInt(r);
+
+    return {
+        resultado: varRep.toString(),
+        formula: 'VR(n, r) = nʳ',
+        pasos: [
+            `Datos ingresados: n = ${n}, r = ${r} (Importa el orden y se permite repetición)`,
+            `1. Sustituir en la fórmula: VR(${n}, ${r}) = ${n}^${r}`,
+            `2. Calcular potencia: multiplicar ${n} por sí mismo ${r} ${r === 1 ? 'vez' : 'veces'}`,
+            `3. Resultado final: VR(${n}, ${r}) = ${varRep.toString()}`
+        ]
+    };
+}
